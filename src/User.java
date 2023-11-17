@@ -60,6 +60,6 @@ public class User {
                 this.password.matches("\\d") &&
                 this.password.matches("[a-z]") &&
                 this.password.matches("[A-Z]") &&
-                this.age > 13);
+                this.age >= 13);
     }
 }
