@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.stubbing.OngoingStubbing;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -14,7 +13,7 @@ public class ToDoListTest {
     private User user;
 
     User validUser;
-    User nonValidUser;
+    User invalidUser;
     String email = "username@mail.com";
     String firstName = "John";
     String lastName = "Smith";
@@ -28,11 +27,12 @@ public class ToDoListTest {
         user = mock(User.class);
         when(user.isValid()).thenReturn(false);
         validUser = new User(email, firstName, lastName, password, age);
-        nonValidUser = new User(email, firstName, lastName, password, 10);
+        invalidUser = new User(email, firstName, lastName, password, 10);
     }
 
     @Test
-    void createList() {
-
+    void createInvalidUserList() {
+        assertThrows(InstantiationException.class,() -> new ToDoList(invalidUser));
     }
+
 }
