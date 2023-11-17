@@ -2,6 +2,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -12,6 +15,9 @@ class ToDoListTest {
     @Mock
     private User user;
 
+    @Mock
+    private ToDoList toDoList;
+
     User validUser;
     User invalidUser;
     String email = "username@mail.com";
@@ -20,12 +26,13 @@ class ToDoListTest {
     String password = "AzErTy1234";
     int age = 20;
 
+
     @BeforeEach
     void setUp() {
         EmailSenderService emailSenderService = mock(EmailSenderService.class);
         when(emailSenderService.sendEmail(anyString())).thenReturn(true);
-        user = mock(User.class);
-        when(user.isValid()).thenReturn(false);
+        toDoList = mock(ToDoList.class);
+        when(toDoList.save()).thenThrow(RuntimeException.class);
         validUser = new User(email, firstName, lastName, password, age);
         invalidUser = new User(email, firstName, lastName, password, 10);
     }
@@ -41,8 +48,17 @@ class ToDoListTest {
     }
 
     @Test
-    void saveTesting() throws InstantiationException {
-        ToDoList toDoList = new ToDoList(validUser);
+    void saveTesting() {
         assertThrows(RuntimeException.class, toDoList::save);
+    }
+
+    @Test
+    void checkEmailSend() throws InstantiationException {
+        ToDoList toDoList = new ToDoList(validUser);
+        ArrayList<Item> items = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            items.add(new Item("lorem","lorem lorem lorem"));
+        }
+        toDoList.setItemList(items);
     }
 }

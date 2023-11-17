@@ -1,6 +1,9 @@
+import lombok.Setter;
+
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+@Setter
 public class ToDoList {
     private ArrayList<Item> itemList;
     static EmailSenderService emailSenderService;
@@ -29,8 +32,8 @@ public class ToDoList {
         }
     }
 
-    public void save() {
+    public boolean save() {
         //sauvegarde en bdd
-        throw new RuntimeException();
+        return false;
     }
 }
