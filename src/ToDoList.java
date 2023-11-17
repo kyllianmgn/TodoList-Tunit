@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class ToDoList{
+public class ToDoList {
     private ArrayList<Item> itemList;
 
-    public void addItem(Item item){
-        try{
-            if (itemList.size() <= 10){
+    public void addItem(Item item) {
+        try {
+            if (itemList.size() <= 10) {
                 itemList.add(item);
-            }else{
+            } else {
                 throw new ItemListFullException();
             }
         } catch (ItemListFullException e) {

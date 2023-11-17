@@ -2,9 +2,8 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 
+@Getter
 public class Item {
-    @Getter
-
     private String name;
     private String content;
     private LocalDate creationDate;
