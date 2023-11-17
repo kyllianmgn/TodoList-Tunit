@@ -25,4 +25,46 @@ class UserTest {
         assertEquals(password, user.getPassword());
         assertEquals(age, user.getAge());
     }
+
+    @Test
+    void validUser(){
+        assertTrue(user.isValid());
+    }
+
+    @Test
+    void invalidAgeUser(){
+        user.setAge(10);
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidLastNameUser(){
+        user.setLastName("");
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidFirstNameUser(){
+        user.setFirstName("");
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidMailUser(){
+        user.setEmail("wrongemailnuhuh");
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidShortPassword(){
+        user.setPassword("ToUP3t1");
+        assertFalse(user.isValid());
+    }
+
+
+    @Test
+    void invalidLongPassword(){
+        user.setPassword("L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6");
+        assertFalse(user.isValid());
+    }
 }

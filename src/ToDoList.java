@@ -12,12 +12,12 @@ public class ToDoList{
         }
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item, User user){
         try{
-            if (itemList.size() <= 10){
+            if (itemList.size() <= 10 && user.isValid()){
                 itemList.add(item);
                 if (itemList.size() == 8){
-                    emailSenderService.sendEmail();
+                    emailSenderService.sendEmail(user.getEmail());
                 }
             }else{
                 throw new ItemListFullException();
