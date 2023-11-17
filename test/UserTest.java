@@ -79,7 +79,6 @@ class UserTest {
         assertFalse(user.isValid());
     }
 
-
     @Test
     void invalidLongPassword() {
         user.setPassword("L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6L0n6");

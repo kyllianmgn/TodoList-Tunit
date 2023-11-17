@@ -32,7 +32,7 @@ public class ToDoListTest {
 
     @Test
     void createInvalidUserList() {
-        assertThrows(InstantiationException.class,() -> new ToDoList(invalidUser));
+        assertThrows(InstantiationException.class, () -> new ToDoList(invalidUser));
     }
 
 }

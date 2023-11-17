@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ItemTest {
 
@@ -20,9 +20,25 @@ class ItemTest {
         }
     }
 
+    static class WrongItemArgumentsProvider implements ArgumentsProvider {
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {
+            return Stream.of(
+                    Arguments.of(new Item("Faire les courses", "Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.Acheter des trucs à manger.")),
+                    Arguments.of(new Item("dqsdqsdqs", "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"))
+            );
+        }
+    }
+
     @ParameterizedTest
     @ArgumentsSource(ItemArgumentsProvider.class)
-    void checkContent(Item item) {
+    void checkContentNominal(Item item) {
         assertTrue(item.checkContent());
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WrongItemArgumentsProvider.class)
+    void checkContentOver1000(Item item) {
+        assertThrows(IllegalArgumentException.class, item::checkContent);
     }
 }
