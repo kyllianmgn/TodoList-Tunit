@@ -8,20 +8,20 @@ public class Item {
     private String content;
     private LocalDate creationDate;
 
-    public Item(String name, String content, LocalDate creationDate) {
+    public Item(String name, String content) {
         this.name = name;
-        checkContent(content);
         this.content = content;
-        this.creationDate = creationDate;
+        this.creationDate = LocalDate.now();
     }
 
-    public void checkContent(String content) {
-        if (content == null || content.isEmpty()) {
+    public boolean checkContent() {
+        if (this.content == null || this.content.isEmpty()) {
             throw new IllegalArgumentException("Content isn't valid.");
         }
-        if (content.length() > 1000) {
+        if (this.content.length() > 1000) {
             throw new IllegalArgumentException("Content length's is over 1000.");
         }
+        return true;
     }
 
     public void setName(String name) {
@@ -29,7 +29,7 @@ public class Item {
     }
 
     public void setContent(String content) {
-        checkContent(content);
+        checkContent();
         this.content = content;
     }
 
