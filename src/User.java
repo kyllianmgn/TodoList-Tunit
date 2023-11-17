@@ -39,7 +39,7 @@ public class User {
     public boolean isValid() {
         return (this.email.matches("[a-zA-Z0-9_]@[a-zA-Z0-9][.][a-z]{2,3}") &&
                 !this.firstName.isEmpty() && !this.lastName.isEmpty() &&
-                (this.password.length() > 8 && this.password.length() < 40) &&
+                (this.password.length() >= 8 && this.password.length() <= 40) &&
                 this.password.matches("\\d") &&
                 this.password.matches("[a-z]") &&
                 this.password.matches("[A-Z]") &&
