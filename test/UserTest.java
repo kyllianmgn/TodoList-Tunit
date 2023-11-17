@@ -56,6 +56,24 @@ class UserTest {
     }
 
     @Test
+    void invalidNoUpperPassword() {
+        user.setPassword("jesuisunmdp55");
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidNoLowerPassword() {
+        user.setPassword("JECRIE972");
+        assertFalse(user.isValid());
+    }
+
+    @Test
+    void invalidNoDigitPassword() {
+        user.setPassword("pasDEchiffreICI");
+        assertFalse(user.isValid());
+    }
+
+    @Test
     void invalidShortPassword() {
         user.setPassword("ToUP3t1");
         assertFalse(user.isValid());
