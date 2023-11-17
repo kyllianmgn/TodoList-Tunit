@@ -42,6 +42,7 @@ public class User {
                 (this.password.length() > 8 && this.password.length() < 40) &&
                 this.password.matches("\\d") &&
                 this.password.matches("[a-z]") &&
-                this.password.matches("[A-Z]"));
+                this.password.matches("[A-Z]") &&
+                this.age > 13);
     }
 }
