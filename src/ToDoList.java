@@ -15,17 +15,17 @@ public class ToDoList {
 
     public void addItem(Item item, User user) {
         try {
-            if (itemList.size() <= 10 && user.isValid() && ChronoUnit.MINUTES.between(item.getCreationDate(), itemList.getLast().getCreationDate()) > 30) {
+            if (itemList.size() <= 10 && user.isValid() && ChronoUnit.MINUTES.between(item.getCreationDate(), itemList.getLast().getCreationDate()) > 30 && itemList.stream().noneMatch(p -> p.getName().equals(item.getName()))) {
                 itemList.add(item);
                 if (itemList.size() == 8) {
                     emailSenderService.sendEmail(user.getEmail());
                 }
                 save();
             } else {
-                throw new ItemListFullException();
+                throw new IllegalArgumentException("Error in item");
             }
-        } catch (ItemListFullException e) {
-            throw new RuntimeException(e);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e);
         }
     }
 
