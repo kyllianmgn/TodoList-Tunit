@@ -14,14 +14,14 @@ public class ToDoList {
         }
     }
 
-    public void addItem(Item item, User user){
-        try{
-            if (itemList.size() <= 10 && user.isValid()){
+    public void addItem(Item item, User user) {
+        try {
+            if (itemList.size() <= 10 && user.isValid()) {
                 itemList.add(item);
-                if (itemList.size() == 8){
+                if (itemList.size() == 8) {
                     emailSenderService.sendEmail(user.getEmail());
                 }
-            }else{
+            } else {
                 throw new ItemListFullException();
             }
         } catch (ItemListFullException e) {

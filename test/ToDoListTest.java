@@ -10,8 +10,8 @@ import static org.mockito.Mockito.when;
 
 public class ToDoListTest {
 
-     @Mock
-     private User user;
+    @Mock
+    private User user;
 
     User validUser;
     User nonValidUser;
@@ -32,7 +32,7 @@ public class ToDoListTest {
     }
 
     @Test
-    void createList(){
+    void createList() {
 
     }
 }

@@ -1,6 +1,6 @@
 public class EmailSenderService {
 
-    public boolean sendEmail(String email){
+    public boolean sendEmail(String email) {
         //Envoie de mail SMTP
         return false;
     }

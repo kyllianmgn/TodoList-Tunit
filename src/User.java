@@ -36,14 +36,14 @@ public class User {
         this.age = age;
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         return (
                 !this.firstName.isEmpty() && !this.lastName.isEmpty() &&
-                (this.password.length() >= 8 && this.password.length() <= 40) &&
-                this.email.matches("[a-zA-Z0-9_]+@[a-zA-Z0-9]+[.][a-z]{2,3}") &&
-                this.password.matches(".*[0-9].*") &&
-                this.password.matches(".*[a-z].*") &&
-                this.password.matches(".*[A-Z].*") &&
-                this.age >= 13);
+                        (this.password.length() >= 8 && this.password.length() <= 40) &&
+                        this.email.matches("[a-zA-Z0-9_]+@[a-zA-Z0-9]+[.][a-z]{2,3}") &&
+                        this.password.matches(".*[0-9].*") &&
+                        this.password.matches(".*[a-z].*") &&
+                        this.password.matches(".*[A-Z].*") &&
+                        this.age >= 13);
     }
 }
