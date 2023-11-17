@@ -7,7 +7,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ToDoListTest {
+class ToDoListTest {
 
     @Mock
     private User user;
@@ -31,8 +31,18 @@ public class ToDoListTest {
     }
 
     @Test
+    void createToDoList(){
+
+    }
+
+    @Test
     void createInvalidUserList() {
         assertThrows(InstantiationException.class,() -> new ToDoList(invalidUser));
     }
 
+    @Test
+    void saveTesting() throws InstantiationException {
+        ToDoList toDoList = new ToDoList(validUser);
+        assertThrows(RuntimeException.class, toDoList::save);
+    }
 }
