@@ -1,8 +1,6 @@
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import static java.time.temporal.ChronoUnit.MINUTES;
-
 public class ToDoList {
     private ArrayList<Item> itemList;
     static EmailSenderService emailSenderService;
